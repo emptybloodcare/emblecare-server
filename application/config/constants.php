@@ -90,3 +90,4 @@ defined('API_FAILURE')        OR define('API_FAILURE', 400); // fail
 defined('API_INDEX_ERROR')        OR define('API_INDEX_ERROR', 403); // index errors
 defined('API_SERVER_INTERNAL_ERROR')        OR define('API_SERVER_INTERNAL_ERROR', 500); // server internal errors
 defined('API_DB_ERROR')        OR define('API_DB_ERROR', 600); // db errors
+defined('API_EMPTY_PARAMS')        OR define('API_EMPTY_PARAMS', 2); // empty parameters
