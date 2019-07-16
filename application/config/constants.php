@@ -83,3 +83,10 @@ defined('EXIT_USER_INPUT')     OR define('EXIT_USER_INPUT', 7); // invalid user 
 defined('EXIT_DATABASE')       OR define('EXIT_DATABASE', 8); // database error
 defined('EXIT__AUTO_MIN')      OR define('EXIT__AUTO_MIN', 9); // lowest automatically-assigned error code
 defined('EXIT__AUTO_MAX')      OR define('EXIT__AUTO_MAX', 125); // highest automatically-assigned error code
+
+/* ERROR CODE */ 
+defined('API_SUCCESS')        OR define('API_SUCCESS', 200); // no errors
+defined('API_FAILURE')        OR define('API_FAILURE', 400); // fail
+defined('API_INDEX_ERROR')        OR define('API_INDEX_ERROR', 403); // index errors
+defined('API_SERVER_INTERNAL_ERROR')        OR define('API_SERVER_INTERNAL_ERROR', 500); // server internal errors
+defined('API_DB_ERROR')        OR define('API_DB_ERROR', 600); // db errors
