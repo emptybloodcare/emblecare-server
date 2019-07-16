@@ -58,5 +58,6 @@ class Api extends CI_Controller {
 			'gender' => $_POST['gender'],
 			'birth' => $_POST['birth']
 		));
+		echo json_encode($data);
 	}
 }
