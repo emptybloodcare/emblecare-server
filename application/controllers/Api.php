@@ -18,11 +18,14 @@ class Api extends CI_Controller {
 	 * map to /index.php/welcome/<method_name>
 	 * @see https://codeigniter.com/user_guide/general/urls.html
 	 */
+
+	/* 메인 페이지 */
 	public function index()
 	{
 		$this->load->view('welcome_message');
 	}
 
+	/* 로그인 API */
 	public function login() {
 		$this->load->model('User');
 		$result = $this->User->login(array(
@@ -45,4 +48,29 @@ class Api extends CI_Controller {
 		echo json_encode($data);
 	}
 
+	/* 회원가입 API */
+	public function join() {
+		$this->load->model('User');
+		$result = $this->User->insert(array(
+			'id' => $_POST['id'],
+			'pw' => md5($_POST['pw']),
+			'name' => $_POST['name'],
+			'gender' => $_POST['gender'],
+			'birth' => $_POST['birth']
+		));
+		if($result) {
+			$data = array(
+				'status' => 200,
+				'message' => '회원가입 성공',
+				'data' => $result
+			);
+		} else {
+			$data = array(
+				'status' => 400,
+				'message' => '회원가입 실패',
+				'data' => $result
+			);
+		}
+		echo json_encode($data);
+	}
 }

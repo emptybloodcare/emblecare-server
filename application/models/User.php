@@ -21,6 +21,7 @@ class User extends CI_Model {
       {
         $data = $row->idx;
       }
-        return $data;
+      return $data;
     }
+
 }
