@@ -9,13 +9,18 @@ class User extends CI_Model {
         $this->load->database();
    	}
 
-   	public function test() {
-   		$this->db->select("user_id");
-   		$this->db->from("user");
-   		$result = $this->db->get();
-   		foreach( $result->result() as $row )
-		{
-        	echo $row->user_id;
-		}
-   	}
+    /* User Login */
+    public function login($argu) {
+      $this->db->where('id', $argu['id']);
+      $this->db->where('pw', md5($argu['pw']));
+      $this->db->select("*");
+      $this->db->from("user");
+      $result = $this->db->get();
+      $data = '';
+      foreach( $result->result() as $row )
+      {
+        $data = $row->idx;
+      }
+        return $data;
+    }
 }
