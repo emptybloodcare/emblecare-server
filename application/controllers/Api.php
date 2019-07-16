@@ -27,7 +27,7 @@ class Api extends CI_Controller {
 		$this->load->model('User');
 		$result = $this->User->login(array(
 			'id' => $_POST['id'],
-			'pw' => $_POST['pw']
+			'pw' => md5($_POST['pw'])
 		));
 		if($result) {
 			$data = array(
@@ -44,4 +44,5 @@ class Api extends CI_Controller {
 		}
 		echo json_encode($data);
 	}
+
 }

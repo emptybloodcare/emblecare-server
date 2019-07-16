@@ -12,7 +12,7 @@ class User extends CI_Model {
     /* User Login */
     public function login($argu) {
       $this->db->where('id', $argu['id']);
-      $this->db->where('pw', md5($argu['pw']));
+      $this->db->where('pw', $argu['pw']);
       $this->db->select("*");
       $this->db->from("user");
       $result = $this->db->get();
