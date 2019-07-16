@@ -29,23 +29,15 @@ class Api extends CI_Controller {
 	public function login() {
 		$this->load->model('User');
 		$result = $this->User->login(array(
-			'id' => $_POST['id'],
-			'pw' => md5($_POST['pw'])
+			'id' => $_GET['id'],
+			'pw' => md5($_GET['pw'])
 		));
-		if($result) {
-			$data = array(
-				'status' => 200,
-				'message' => '로그인 성공',
-				'data' => $result
-			);
+		if($result['status'] == 200) {
+			$result['message'] = '로그인 성공';
 		} else {
-			$data = array(
-				'status' => 400,
-				'message' => '로그인 실패',
-				'data' => $result
-			);
+			$result['message'] = '로그인 실패';
 		}
-		echo json_encode($data);
+		echo json_encode($result);
 	}
 
 	/* 회원가입 API */

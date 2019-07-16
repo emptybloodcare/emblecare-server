@@ -11,7 +11,7 @@ class User extends CI_Model {
 
     /* User Login */
     public function login($argu) {
-      if(empty($argu['id']) || empty($argu['pw']) {
+      if(empty($argu['id']) || empty($argu['pw'])) {
         return array('status' => API_EMPTY_PARAMS, 'data' => null);
       } else {
         $this->db->where('id', $argu['id']);
@@ -24,7 +24,7 @@ class User extends CI_Model {
         {
           $data = $row->idx;
         }
-        return $data;
+        return array('status' => API_SUCCESS, 'data' => $data);
       }
     }
 
