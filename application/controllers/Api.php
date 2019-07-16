@@ -29,14 +29,9 @@ class Api extends CI_Controller {
 	public function login() {
 		$this->load->model('User');
 		$result = $this->User->login(array(
-			'id' => $_GET['id'],
-			'pw' => md5($_GET['pw'])
+			'id' => $_POST['id'],
+			'pw' => md5($_POST['pw'])
 		));
-		if($result['status'] == 200) {
-			$result['message'] = '로그인 성공';
-		} else {
-			$result['message'] = '로그인 실패';
-		}
 		echo json_encode($result);
 	}
 
@@ -50,19 +45,6 @@ class Api extends CI_Controller {
 			'gender' => $_POST['gender'],
 			'birth' => $_POST['birth']
 		));
-		if($result) {
-			$data = array(
-				'status' => 200,
-				'message' => '회원가입 성공',
-				'data' => $result
-			);
-		} else {
-			$data = array(
-				'status' => 400,
-				'message' => '회원가입 실패',
-				'data' => $result
-			);
-		}
-		echo json_encode($data);
+		echo json_encode($result);
 	}
 }

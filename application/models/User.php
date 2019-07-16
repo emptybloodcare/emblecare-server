@@ -12,7 +12,11 @@ class User extends CI_Model {
     /* User Login */
     public function login($argu) {
       if(empty($argu['id']) || empty($argu['pw'])) {
-        return array('status' => API_EMPTY_PARAMS, 'data' => null);
+        return array(
+          'status' => API_FAILURE, 
+          'message' => '로그인 실패',
+          'data' => null
+        );
       } else {
         $this->db->where('id', $argu['id']);
         $this->db->where('pw', $argu['pw']);
@@ -24,14 +28,21 @@ class User extends CI_Model {
         {
           $data = $row->idx;
         }
-        return array('status' => API_SUCCESS, 'data' => $data);
+        return array(
+          'status' => API_SUCCESS, 
+          'message' => '로그인 성공',
+          'data' => $data
+        );
       }
     }
 
      /* User Join */
     public function insert($argu) {
       if(empty($argu['id']) || empty($argu['pw']) || empty($argu['name']) || empty($argu['gender']) || empty($argu['gender'])) {
-        return API_EMPTY_PARAMS;
+        return array(
+          'status' => API_FAILURE, 
+          'message' => '회원가입 실패'        
+        );
       } else {
         $this->db->set('id', $argu['id']);
         $this->db->set('pw', $argu['pw']);
@@ -41,7 +52,12 @@ class User extends CI_Model {
         $this->db->insert("user");
         $result = $this->db->get();
       
-        return $this->db->insert_id();
+        $idx = $this->db->insert_id();
+
+        return array(
+          'status' => API_SUCCESS, 
+          'message' => '로그인 성공'
+        );
       }
     }
 }
