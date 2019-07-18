@@ -21,28 +21,24 @@ class Measure extends CI_Model {
    			$this->db->set('period', $argu['period']);
 			$this->db->set('hb', 0);
 			$this->db->set('user_idx', $argu['user_idx']);
-			$this->db->set('date', date("Y-m-d"));
+			$this->db->set('date', date("y/m/d"));
 			$this->db->set('temperature', 0);
 			$this->db->set('humidity', 0);
 			$this->db->insert("measure");
 			$result = $this->db->get();
 
+			$data = array(
+				'hb' => 0,
+				'data' => date("y/m/d")
+			);
+
 			return array(
 				'status' => API_SUCCESS, 
 				'message' => 'Success',
-				'data' => null
+				'data' => json_encode($data)
 			);
    		}
    	}
-
-   	/* 측정결과 */
-    public function get($argu) {
-    	return array(
-			'status' => API_SUCCESS, 
-			'message' => 'Success',
-			'data' => null
-		);
-    }
 
     /* 측정 리스트 */
     public function list_search($argu) {

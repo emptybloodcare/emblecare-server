@@ -58,17 +58,7 @@ class Api extends CI_Controller {
 		));
 		echo json_encode($result);
 	}
-
-	/* 측정결과 API */
-	public function g_measure() {
-		$this->load->model('Measure');
-		$result = $this->Measure->get(array(
-
-		));
-
-		echo json_encode($result);
-	}
-
+	
 	/* 측정리스트 API */
 	public function measures() {
 		$this->load->model('Measure');
