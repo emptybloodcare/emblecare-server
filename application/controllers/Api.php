@@ -52,6 +52,7 @@ class Api extends CI_Controller {
 	public function measure() {
 		$this->load->model('Measure');
 		$result = $this->Measure->insert(array(
+			'user_idx' => $_POST['user_idx'],
 			'period' => $_POST['period'],
 			'video' => $_POST['video']
 		));
