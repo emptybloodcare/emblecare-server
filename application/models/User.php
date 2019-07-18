@@ -74,5 +74,6 @@ class User extends CI_Model {
       $this->db->select("*");
       $this->db->from("user");
       $result = $this->db->get();
+      return $result->num_rows();
     }
 }
