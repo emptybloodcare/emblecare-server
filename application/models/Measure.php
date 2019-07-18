@@ -36,7 +36,7 @@ class Measure extends CI_Model {
    	}
 
    	/* 측정결과 */
-    public function get() {
+    public function get($argu) {
     	return array(
 			'status' => API_SUCCESS, 
 			'message' => 'Success',
@@ -45,7 +45,7 @@ class Measure extends CI_Model {
     }
 
     /* 측정 리스트 */
-    public function list_search() {
+    public function list_search($argu) {
     	$this->db->where('user_idx', $argu['user_idx']);
         $this->db->select("*");
         $this->db->from("measure");
