@@ -44,20 +44,35 @@ class User extends CI_Model {
           'message' => '회원가입 실패'        
         );
       } else {
-        $this->db->set('id', $argu['id']);
-        $this->db->set('pw', $argu['pw']);
-        $this->db->set('name', $argu['name']);
-        $this->db->set('gender', $argu['gender']);
-        $this->db->set('birth', $argu['birth']);
-        $this->db->insert("user");
-        $result = $this->db->get();
-      
-        $idx = $this->db->insert_id();
+        if(!$this->check_id($argu)) {
+          $this->db->set('id', $argu['id']);
+          $this->db->set('pw', $argu['pw']);
+          $this->db->set('name', $argu['name']);
+          $this->db->set('gender', $argu['gender']);
+          $this->db->set('birth', $argu['birth']);
+          $this->db->insert("user");
+          $result = $this->db->get();
+        
+          $idx = $this->db->insert_id();
 
-        return array(
-          'status' => API_SUCCESS, 
-          'message' => '로그인 성공'
-        );
+          return array(
+            'status' => API_SUCCESS, 
+            'message' => '로그인 성공'
+          );
+        } else {
+          return array(
+            'status' => API_INDEX_ERROR, 
+            'message' => '이미 존재하는 ID입니다'        
+          );
+        }
+        
       }
+    }
+
+    private function check_id($argu) {
+      $this->db->where('id', $argu['id']);
+      $this->db->select("*");
+      $this->db->from("user");
+      $result = $this->db->get();
     }
 }
