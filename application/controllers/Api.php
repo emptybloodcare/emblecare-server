@@ -29,8 +29,8 @@ class Api extends CI_Controller {
 	public function login() {
 		$this->load->model('User');
 		$result = $this->User->login(array(
-			'id' => $_POST['id'],
-			'pw' => md5($_POST['pw'])
+			'id' => $_GET['id'],
+			'pw' => md5($_GET['pw'])
 		));
 		echo json_encode($result);
 	}
@@ -58,4 +58,16 @@ class Api extends CI_Controller {
 		));
 		echo json_encode($result);
 	}
+
+	/* 측정결과 API */
+	public function g_measure() {
+		$this->load->model('Measure');
+		$result = $this->Measure->get(array(
+
+		));
+		
+		echo json_encode($result);
+	}
+
+
 }

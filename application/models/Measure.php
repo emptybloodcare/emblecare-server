@@ -34,4 +34,14 @@ class Measure extends CI_Model {
 			);
    		}
    	}
+
+   	/* 측정결과 */
+    public function get() {
+    	return array(
+			'status' => API_SUCCESS, 
+			'message' => 'Success',
+			'data' => null
+		);
+    }
+
 }

@@ -68,7 +68,7 @@ class User extends CI_Model {
         
       }
     }
-
+    
     private function check_id($argu) {
       $this->db->where('id', $argu['id']);
       $this->db->select("*");
