@@ -22,6 +22,7 @@ class Api extends CI_Controller {
 	/* 메인 페이지 */
 	public function index()
 	{
+		$this->load->helper('url');
 		$this->load->view('welcome_message');
 	}
 
@@ -58,7 +59,7 @@ class Api extends CI_Controller {
 		));
 		echo json_encode($result);
 	}
-	
+
 	/* 측정리스트 API */
 	public function measures() {
 		$this->load->model('Measure');
