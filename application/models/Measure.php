@@ -44,4 +44,22 @@ class Measure extends CI_Model {
 		);
     }
 
+    /* 측정 리스트 */
+    public function list_search() {
+    	$this->db->where('user_idx', $argu['user_idx']);
+        $this->db->select("*");
+        $this->db->from("measure");
+        $result = $this->db->get();
+        $data = [];
+        foreach( $result->result() as $row )
+        {
+          // $data = $row->idx;
+        }
+        return array(
+			'status' => API_SUCCESS, 
+			'message' => 'Success',
+			'data' => $data
+		);
+    }
+
 }

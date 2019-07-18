@@ -65,9 +65,18 @@ class Api extends CI_Controller {
 		$result = $this->Measure->get(array(
 
 		));
-		
+
 		echo json_encode($result);
 	}
 
+	/* 측정리스트 API */
+	public function measures() {
+		$this->load->model('Measure');
+		$result = $this->Measure->list_search(array(
+			'user_idx' => $_GET['user_idx']
+		));
+
+		echo json_encode($result);
+	}
 
 }
