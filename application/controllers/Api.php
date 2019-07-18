@@ -47,4 +47,14 @@ class Api extends CI_Controller {
 		));
 		echo json_encode($result);
 	}
+
+	/* 측정하기 API */
+	public function measure() {
+		$this->load->model('Measure');
+		$result = $this->Measure->insert(array(
+			'period' => $_POST['period'],
+			'video' => $_POST['video']
+		));
+		echo json_encode($result);
+	}
 }
