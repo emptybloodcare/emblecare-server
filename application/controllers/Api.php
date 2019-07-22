@@ -72,7 +72,7 @@ class Api extends CI_Controller {
 
 	/* 날씨 정보 API */
 	public function weather() {
-		$url = "http://www.kma.go.kr/wid/queryDFS.jsp?gridx=67&gridy=100";
+		$url = "http://www.kma.go.kr/wid/queryDFS.jsp?gridx=60&gridy=126";
 		$result = simplexml_load_file($url);
 		$list = array();
 
