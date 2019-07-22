@@ -79,18 +79,20 @@ class Api extends CI_Controller {
 		$location= iconv("UTF-8","euc-kr",$result->header->title); //예보지역
 		$results = $result->body;
 		$bl_data='';
+		$result = [];
+		
 		foreach($results->data as $item) {
 			if(!$bl_data) {
-				// $temp=$item->temp; //현재온도
-				// $sky=iconv("UTF-8","euc-kr",$item->wfKor); //날씨상태(맑음,구름조금,구름많음,흐림,비,눈/비,눈)
-				$temp = $item;
-
-				print_r(($temp));
-				// $bl_data=true;
-				echo "<br>";
+				$bl_data=true;
+				$result = array(
+					'hour' => (int)$item->hour,
+					'temp' => (int)$item ->temp,
+					'reh' => (int)$item->reh
+				);
 			}
 		}
-		print_r(($temp));
+
+		echo json_encode($result);
 	}
 	
 
