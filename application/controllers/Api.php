@@ -70,4 +70,29 @@ class Api extends CI_Controller {
 		echo json_encode($result);
 	}
 
+	/* 날씨 정보 API */
+	public function weather() {
+		$url = "http://www.kma.go.kr/wid/queryDFS.jsp?gridx=67&gridy=100";
+		$result = simplexml_load_file($url);
+		$list = array();
+
+		$location= iconv("UTF-8","euc-kr",$result->header->title); //예보지역
+		$results = $result->body;
+		$bl_data='';
+		foreach($results->data as $item) {
+			if(!$bl_data) {
+				// $temp=$item->temp; //현재온도
+				// $sky=iconv("UTF-8","euc-kr",$item->wfKor); //날씨상태(맑음,구름조금,구름많음,흐림,비,눈/비,눈)
+				$temp = $item;
+
+				print_r(($temp));
+				// $bl_data=true;
+				echo "<br>";
+			}
+		}
+		print_r(($temp));
+	}
+	
+
+
 }
