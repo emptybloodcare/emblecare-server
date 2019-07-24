@@ -95,8 +95,11 @@ class Api extends CI_Controller {
 		echo json_encode($result);
 	}
 	
+
+	// api key : 4049256d888776cd6b2a0d093b861255
+
 	public function weather2() {
-		$url = "https://samples.openweathermap.org/data/2.5/weather?lat=35&lon=139&appid=b6907d289e10d714a6e88b30761fae22";
+		$url = "https://samples.openweathermap.org/data/2.5/weather?lat=37.5464670478228&lon=126.96378887067216&appid=b6907d289e10d714a6e88b30761fae22";
 		 
 		$ch = curl_init();
 		 
@@ -110,7 +113,14 @@ class Api extends CI_Controller {
 		 
 		$json_results = json_decode($result, true);
 		 
-		print_r($json_results);
-			}
+		// print_r($json_results);
+		// print_r($json_results['main']);
+		$result = array(
+			'temp' => $json_results['main']['temp'],
+			'reh' => $json_results['main']['humidity']
+		);
+
+		echo json_encode($result);
+	}
 
 }
