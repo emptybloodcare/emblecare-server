@@ -99,7 +99,7 @@ class Api extends CI_Controller {
 	// api key : 4049256d888776cd6b2a0d093b861255
 
 	public function weather2() {
-		$url = "https://samples.openweathermap.org/data/2.5/weather?lat=37.5464670478228&lon=126.96378887067216&appid=b6907d289e10d714a6e88b30761fae22";
+		$url = "http://api.openweathermap.org/data/2.5/weather?q=Seoul,kr&units=metric&APPID=4049256d888776cd6b2a0d093b861255";
 		 
 		$ch = curl_init();
 		 
