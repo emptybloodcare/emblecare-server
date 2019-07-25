@@ -72,33 +72,6 @@ class Api extends CI_Controller {
 
 	/* 날씨 정보 API */
 	public function weather() {
-		$url = "http://www.kma.go.kr/wid/queryDFS.jsp?gridx=60&gridy=126";
-		$result = simplexml_load_file($url);
-		$list = array();
-
-		$location= iconv("UTF-8","euc-kr",$result->header->title); //예보지역
-		$results = $result->body;
-		$bl_data='';
-		$result = [];
-
-		foreach($results->data as $item) {
-			if(!$bl_data) {
-				$bl_data=true;
-				$result = array(
-					'hour' => (int)$item->hour,
-					'temp' => (int)$item ->temp,
-					'reh' => (int)$item->reh
-				);
-			}
-		}
-
-		echo json_encode($result);
-	}
-	
-
-	// api key : 4049256d888776cd6b2a0d093b861255
-
-	public function weather2() {
 		$url = "http://api.openweathermap.org/data/2.5/weather?q=Seoul,kr&units=metric&APPID=4049256d888776cd6b2a0d093b861255";
 		 
 		$ch = curl_init();
