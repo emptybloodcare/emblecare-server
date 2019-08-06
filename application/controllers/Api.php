@@ -88,10 +88,25 @@ class Api extends CI_Controller {
 		 
 		// print_r($json_results);
 		// print_r($json_results['main']);
-		$result = array(
+		$data = array(
 			'temp' => $json_results['main']['temp'],
 			'reh' => $json_results['main']['humidity']
 		);
+
+		if($data) {
+			$result = array(
+				'status' => 200,
+				'message' => 'Success',
+				'data' => $data
+			);
+		} else {
+			$result = array(
+				'status' => 400,
+				'message' => 'Fail',
+				'data' => null
+			);
+		}
+		
 
 		echo json_encode($result);
 	}
