@@ -38,7 +38,7 @@ class User extends CI_Model {
 
      /* User Join */
     public function insert($argu) {
-      if(empty($argu['id']) || empty($argu['pw']) || empty($argu['name']) || empty($argu['gender']) || empty($argu['birth'])) {
+      if(empty($argu['id']) || empty($argu['pw']) || empty($argu['name']) || empty($argu['birth'])) {
         return array(
           'status' => API_FAILURE, 
           'message' => '회원가입 실패'        
