@@ -52,16 +52,16 @@ class Api extends CI_Controller {
 	/* 회원가입 API 2 */
 	public function join2($input) {
 
-		$this->error_log("test");
-		
-		$this->load->model('User');
-		$result = $this->User->insert(array(
-			'id' =>  element('id', $input, null),
-			'pw' => element('pw', $input, null),
-			'name' => element('name', $input, null),
-			'gender' => element('gender', $input, null),
-			'birth' => element('birth', $input, null)
-		));
+		$this->error_log("정음이가 들어왔어요");
+
+		// $this->load->model('User');
+		// $result = $this->User->insert(array(
+		// 	'id' =>  element('id', $input, null),
+		// 	'pw' => element('pw', $input, null),
+		// 	'name' => element('name', $input, null),
+		// 	'gender' => element('gender', $input, null),
+		// 	'birth' => element('birth', $input, null)
+		// ));
 
 
 		echo json_encode($result);
