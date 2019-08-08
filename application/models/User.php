@@ -38,14 +38,19 @@ class User extends CI_Model {
 
      /* User Join */
     public function insert($argu) {
+
+      $this->error_log("모델 입성");
       if(empty($argu['id']) || empty($argu['pw']) || empty($argu['name']) || empty($argu['birth'])) {
         return array(
           'status' => API_FAILURE, 
           'message' => '회원가입 실패'        
         );
       } else {
+
+          $this->error_log("드루왕");
         // if(!$this->check_id($argu)) {
           $this->error_log($argu['id']);
+          
           $this->db->set('id', $argu['id']);
           $this->db->set('pw', $argu['pw']);
           $this->db->set('name', $argu['name']);

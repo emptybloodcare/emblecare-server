@@ -49,7 +49,7 @@ class Api extends CI_Controller {
 		$this->error_log("name: " + $_POST['name']);
 		$this->error_log("gender: " + $_POST['gender']);
 		$this->error_log("birth: " + $_POST['birth']);
-		
+
 		$result = $this->User->insert(array(
 			'id' => $_POST['id'],
 			'pw' => md5($_POST['pw']),
@@ -57,6 +57,8 @@ class Api extends CI_Controller {
 			'gender' => $_POST['gender'],
 			'birth' => $_POST['birth']
 		));
+
+		$this->error_log("정음이가 나갔어요");
 		echo json_encode($result);
 	}
 
