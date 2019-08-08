@@ -51,7 +51,8 @@ class Api extends CI_Controller {
 
 	/* 회원가입 API 2 */
 	public function join2($input) {
-
+		error_reporting(0);
+		
 		$this->error_log("정음이가 들어왔어요");
 
 		// $this->load->model('User');
@@ -64,7 +65,7 @@ class Api extends CI_Controller {
 		// ));
 
 
-		echo json_encode($result);
+		// echo json_encode($result);
 	}
 
 	/* 측정하기 API */
