@@ -50,9 +50,9 @@ class Api extends CI_Controller {
 	}
 
 	/* 회원가입 API 2 */
-	public function join2($input) {
+	public function join2() {
 		error_reporting(0);
-		
+
 		$this->error_log("정음이가 들어왔어요");
 
 		// $this->load->model('User');
