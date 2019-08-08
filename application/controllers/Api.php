@@ -51,6 +51,9 @@ class Api extends CI_Controller {
 
 	/* 회원가입 API 2 */
 	public function join2($input) {
+
+		$this->error_log("test");
+		
 		$this->load->model('User');
 		$result = $this->User->insert(array(
 			'id' =>  element('id', $input, null),
@@ -59,6 +62,8 @@ class Api extends CI_Controller {
 			'gender' => element('gender', $input, null),
 			'birth' => element('birth', $input, null)
 		));
+
+
 		echo json_encode($result);
 	}
 
@@ -122,5 +127,22 @@ class Api extends CI_Controller {
 		
 		echo json_encode($result);
 	}
+
+
+	/* 로그 */
+	public function error_log($msg)
+    {
+		$log_filename = "{$_SERVER['DOCUMENT_ROOT']}/logs/error_log";
+		$now        = getdate();
+		$today      = $now['year']."/".$now['mon']."/".$now['mday'];
+		$now_time   = $now['hours'].":".$now['minutes'].":".$now['seconds'];
+		$now        = $today." ".$now_time;
+			$filep = fopen($log_filename, "a");
+			if(!$filep) {
+			die("can't open log file : ". $log_filename);
+		}
+		fputs($filep, "{$now} : {$msg}\n\r");
+		fclose($filep);
+    }
 
 }
