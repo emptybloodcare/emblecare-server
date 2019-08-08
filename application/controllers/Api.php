@@ -28,26 +28,25 @@ class Api extends CI_Controller {
 
 	/* 로그인 API */
 	public function login() {
-		$this->error_log("[로그인] ENTER");
+		$this->error_log("[/api/login] ENTER");
 		$_POST = json_decode(file_get_contents('php://input'), true);
 
-		
-		$this->error_log("id: " + $_POST['id']);
-		$this->error_log("pw: " + $_POST['pw']);
+		$this->error_log($_POST['id']);
+		$this->error_log($_POST['pw']);
 
-		// $this->load->model('User');
-		// $result = $this->User->login(array(
-		// 	'id' => $_POST['id'],
-		// 	'pw' => md5($_POST['pw'])
-		// ));
+		$this->load->model('User');
+		$result = $this->User->login(array(
+			'id' => $_POST['id'],
+			'pw' => md5($_POST['pw'])
+		));
 
-		// $this->error_log("[로그인] EXIT");
-		// echo json_encode($result);
+		$this->error_log("[/api/login] EXIT");
+		echo json_encode($result);
 	}
 
 	/* 회원가입 API */
 	public function join() {
-		$this->error_log("정음이가 들어왔어요");
+		$this->error_log("[/api/join] ENTER");
 		$_POST = json_decode(file_get_contents('php://input'), true);
 
 		$this->load->model('User');
@@ -66,7 +65,7 @@ class Api extends CI_Controller {
 			'birth' => $_POST['birth']
 		));
 
-		$this->error_log("정음이가 나갔어요");
+		$this->error_log("[/api/join] EXIT");
 		echo json_encode($result);
 	}
 
