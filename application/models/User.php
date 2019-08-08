@@ -45,6 +45,7 @@ class User extends CI_Model {
         );
       } else {
         // if(!$this->check_id($argu)) {
+          $this->error_log($argu['id']);
           $this->db->set('id', $argu['id']);
           $this->db->set('pw', $argu['pw']);
           $this->db->set('name', $argu['name']);
@@ -52,6 +53,9 @@ class User extends CI_Model {
           $this->db->set('birth', $argu['birth']);
           $this->db->insert("user");
           $result = $this->db->get();
+
+
+          $this->error_log("test");
         
           // $idx = $this->db->insert_id();
 
@@ -76,4 +80,21 @@ class User extends CI_Model {
       $result = $this->db->get();
       return $result->num_rows();
     }
+
+    /* 로그 */
+    public function error_log($msg)
+    {
+      $log_filename = "{$_SERVER['DOCUMENT_ROOT']}/logs/error_log";
+      $now        = getdate();
+      $today      = $now['year']."/".$now['mon']."/".$now['mday'];
+      $now_time   = $now['hours'].":".$now['minutes'].":".$now['seconds'];
+      $now        = $today." ".$now_time;
+        $filep = fopen($log_filename, "a");
+        if(!$filep) {
+        die("can't open log file : ". $log_filename);
+      }
+      fputs($filep, "{$now} : {$msg}\n\r");
+      fclose($filep);
+    }
+
 }
