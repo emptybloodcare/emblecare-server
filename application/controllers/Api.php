@@ -38,6 +38,8 @@ class Api extends CI_Controller {
 
 	/* 회원가입 API */
 	public function join() {
+		$_POST = json_decode(file_get_contents('php://input'), true);
+	
 		$this->load->model('User');
 		$result = $this->User->insert(array(
 			'id' => $_POST['id'],
@@ -51,9 +53,10 @@ class Api extends CI_Controller {
 
 	/* 회원가입 API 2 */
 	public function join2($input) {
+		error_reporting(0);
 
-		$this->error_log("test");
-		
+		$this->error_log("정음이가 들어왔어요");
+
 		$this->load->model('User');
 		$result = $this->User->insert(array(
 			'id' =>  element('id', $input, null),
