@@ -20,13 +20,16 @@ class User extends CI_Model {
       } else {
         $this->error_log("모델 입성");
 
-        $this->db->where('id', $argu['id']);
-        $this->db->where('pw', $argu['pw']);
+        $this->error_log($argu['id']);
+        $this->error_log($argu['pw']);
+
+        $this->db->where('id', 'emblecare');
+        $this->db->where('pw', 'emblecare1');
         $this->db->select("*");
         $this->db->from("user");
         $result = $this->db->get();
         // $data = '';
-        
+
         // $this->error_log("모델 입성");
 
         // foreach( $result->result() as $row )
@@ -34,11 +37,20 @@ class User extends CI_Model {
         //   $data = $row->idx;
         // }
         // $data = null;
-        return array(
-          'status' => API_SUCCESS, 
-          'message' => '로그인 성공',
-          'data' => $data
-        );
+        if( $result->num_rows()) {
+          return array(
+            'status' => API_SUCCESS, 
+            'message' => '로그인 성공',
+            'data' => $data
+          );
+        } else {
+          return array(
+            'status' => 433, 
+            'message' => '존재하지 않는 아이디 또는 패스워드입니다.',
+            'data' => $data
+          );
+        }
+        
       }
     }
 
