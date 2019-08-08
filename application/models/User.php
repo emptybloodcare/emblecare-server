@@ -57,7 +57,7 @@ class User extends CI_Model {
           $this->db->set('gender', $argu['gender']);
           $this->db->set('birth', $argu['birth']);
           $this->db->insert("user");
-          $result = $this->db->get();
+          // $result = $this->db->get();
 
 
           $this->error_log("test");
