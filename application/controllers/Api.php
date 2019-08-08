@@ -49,6 +49,19 @@ class Api extends CI_Controller {
 		echo json_encode($result);
 	}
 
+	/* 회원가입 API 2 */
+	public function join2($input) {
+		$this->load->model('User');
+		$result = $this->User->insert(array(
+			'id' =>  element('id', $input, null),
+			'pw' => element('pw', $input, null),
+			'name' => element('name', $input, null),
+			'gender' => element('gender', $input, null),
+			'birth' => element('birth', $input, null)
+		));
+		echo json_encode($result);
+	}
+
 	/* 측정하기 API */
 	public function measure() {
 		$this->load->model('Measure');
@@ -107,7 +120,6 @@ class Api extends CI_Controller {
 			);
 		}
 		
-
 		echo json_encode($result);
 	}
 
