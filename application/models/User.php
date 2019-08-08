@@ -18,17 +18,22 @@ class User extends CI_Model {
           'data' => null
         );
       } else {
-        // $this->db->where('id', $argu['id']);
-        // $this->db->where('pw', $argu['pw']);
-        // $this->db->select("*");
-        // $this->db->from("user");
-        // $result = $this->db->get();
+        $this->error_log("모델 입성");
+
+        $this->db->where('id', $argu['id']);
+        $this->db->where('pw', $argu['pw']);
+        $this->db->select("*");
+        $this->db->from("user");
+        $result = $this->db->get();
         // $data = '';
+        
+        // $this->error_log("모델 입성");
+
         // foreach( $result->result() as $row )
         // {
         //   $data = $row->idx;
         // }
-        $data = null;
+        // $data = null;
         return array(
           'status' => API_SUCCESS, 
           'message' => '로그인 성공',
