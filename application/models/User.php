@@ -47,10 +47,10 @@ class User extends CI_Model {
         );
       } else {
 
-          $this->error_log("드루왕");
-        // if(!$this->check_id($argu)) {
+        $this->error_log("드루왕");
+        if(!$this->check_id($argu)) {
           $this->error_log($argu['id']);
-          
+
           $this->db->set('id', $argu['id']);
           $this->db->set('pw', $argu['pw']);
           $this->db->set('name', $argu['name']);
@@ -68,12 +68,12 @@ class User extends CI_Model {
             'status' => API_SUCCESS, 
             'message' => '로그인 성공'
           );
-        // } else {
-        //   return array(
-        //     'status' => API_INDEX_ERROR, 
-        //     'message' => '이미 존재하는 ID입니다'        
-        //   );
-        // }
+        } else {
+          return array(
+            'status' => API_INDEX_ERROR, 
+            'message' => '이미 존재하는 ID입니다'        
+          );
+        }
         
       }
     }
