@@ -28,10 +28,14 @@ class Api extends CI_Controller {
 
 	/* 로그인 API */
 	public function login() {
+
+		$this->error_log("정음이가 들어왔어요");
+		$_POST = json_decode(file_get_contents('php://input'), true);
+
 		$this->load->model('User');
 		$result = $this->User->login(array(
-			'id' => $_GET['id'],
-			'pw' => md5($_GET['pw'])
+			'id' => $_POST['id'],
+			'pw' => md5($_POST['pw'])
 		));
 		echo json_encode($result);
 	}
