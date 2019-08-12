@@ -152,7 +152,7 @@ class Api extends CI_Controller {
     	$this->error_log("[/api/measure_flag] ENTER");
 		$_POST = json_decode(file_get_contents('php://input'), true);
 
-		$this->load->model('User');
+		$this->load->model('Measure');
 
 		$this->error_log("user_idx: " + $_POST['user_idx']);
 		$this->error_log("flag: " + $_POST['flag']);

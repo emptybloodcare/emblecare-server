@@ -58,4 +58,31 @@ class Measure extends CI_Model {
 		);
     }
 
+    /* 측정하기 버튼 클릭 */
+    public function flag($argu) {
+
+      $this->error_log("[models/Measure/flag] ENTER");
+      if(empty($argu['flag'])) {
+        return array(
+          'status' => API_FAILURE, 
+          'message' => 'Fail'        
+        );
+      } else {
+        
+		$this->error_log($argu['user_idx']);
+		$this->error_log($argu['flag']);
+
+		$this->db->set('user_idx', $argu['user_idx']);
+		$this->db->set('flag', $argu['flag']);
+		$this->db->insert("user");
+
+		return array(
+		'status' => API_SUCCESS, 
+		'message' => 'SUCCESS'
+		);
+        
+        
+      }
+    }
+
 }
