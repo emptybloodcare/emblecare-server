@@ -64,25 +64,40 @@ class Measure extends CI_Model {
       $this->error_log("[models/Measure/flag] ENTER");
       if(empty($argu['flag'])) {
         return array(
-          'status' => API_FAILURE, 
-          'message' => 'Fail'        
+			'status' => API_FAILURE, 
+			'message' => 'Fail'        
         );
       } else {
         
 		$this->error_log($argu['user_idx']);
 		$this->error_log($argu['flag']);
 
-		$this->db->set('user_idx', $argu['user_idx']);
-		$this->db->set('flag', $argu['flag']);
-		$this->db->insert("user");
+		if(!$this->check_flag($argu)) {
+			$this->db->set('user_idx', $argu['user_idx']);
+			$this->db->set('flag', $argu['flag']);
+			$this->db->insert("measure_flag");
+		} else {
+			$this->db->set('flag', $argu['flag']);
+			$this->db->where('user_idx', $argu['user_idx']);
+			$this->db->update("measure_flag");
+		}
 
 		return array(
-		'status' => API_SUCCESS, 
-		'message' => 'SUCCESS'
+			'status' => API_SUCCESS, 
+			'message' => 'SUCCESS'
 		);
         
         
       }
+    }
+
+    /* 측정한 경험이 있는지 */
+    private function check_flag($argu) {
+		$this->db->where('user_idx', $argu['user_idx']);
+		$this->db->select("*");
+		$this->db->from("measure_flag");
+		$result = $this->db->get();
+		return $result->num_rows();
     }
 
 }
