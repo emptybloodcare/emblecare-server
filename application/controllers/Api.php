@@ -51,12 +51,6 @@ class Api extends CI_Controller {
 
 		$this->load->model('User');
 
-		$this->error_log("id: " + $_POST['id']);
-		$this->error_log("pw: " + $_POST['pw']);
-		$this->error_log("name: " + $_POST['name']);
-		$this->error_log("gender: " + $_POST['gender']);
-		$this->error_log("birth: " + $_POST['birth']);
-
 		$result = $this->User->insert(array(
 			'id' => $_POST['id'],
 			'pw' => md5($_POST['pw']),
