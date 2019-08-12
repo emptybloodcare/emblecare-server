@@ -23,8 +23,8 @@ class User extends CI_Model {
         $this->error_log($argu['id']);
         $this->error_log($argu['pw']);
 
-        $this->db->where('id', 'emblecare');
-        $this->db->where('pw', 'emblecare1');
+        $this->db->where('id', $argu['id']);
+        $this->db->where('pw', $argu['pw']);
         $this->db->select("*");
         $this->db->from("user");
         $result = $this->db->get();
