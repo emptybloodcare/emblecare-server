@@ -60,7 +60,6 @@ class Measure extends CI_Model {
 
     /* 측정하기 버튼 클릭 */
     public function flag($argu) {
-
       $this->error_log("[models/Measure/flag] ENTER");
       if(empty($argu['flag'])) {
         return array(
@@ -98,6 +97,22 @@ class Measure extends CI_Model {
 		$this->db->from("measure_flag");
 		$result = $this->db->get();
 		return $result->num_rows();
+    }
+
+    /* 로그 */
+    public function error_log($msg)
+    {
+		$log_filename = "{$_SERVER['DOCUMENT_ROOT']}/logs/error_log";
+		$now        = getdate();
+		$today      = $now['year']."/".$now['mon']."/".$now['mday'];
+		$now_time   = $now['hours'].":".$now['minutes'].":".$now['seconds'];
+		$now        = $today." ".$now_time;
+		$filep = fopen($log_filename, "a");
+		if(!$filep) {
+		die("can't open log file : ". $log_filename);
+		}
+		fputs($filep, "{$now} : {$msg}\n\r");
+		fclose($filep);
     }
 
 }
