@@ -110,4 +110,19 @@
 2019/8/12 10:14:49 : [/api/measure_flag] ENTER
 2019/8/12 10:14:49 : 0
 2019/8/12 10:14:49 : 0
+2019/8/12 10:15:37 : [/api/measure_flag] ENTER
+2019/8/12 10:15:37 : 0
+2019/8/12 10:15:37 : 0
+2019/8/12 10:15:37 : [models/Measure/flag] ENTER
+2019/8/12 10:15:37 : [/api/measure_flag] EXIT
+2019/8/12 10:15:38 : [/api/measure_flag] ENTER
+2019/8/12 10:15:38 : 0
+2019/8/12 10:15:38 : 0
+2019/8/12 10:15:38 : [models/Measure/flag] ENTER
+2019/8/12 10:15:38 : [/api/measure_flag] EXIT
+2019/8/12 10:15:38 : [/api/measure_flag] ENTER
+2019/8/12 10:15:38 : 0
+2019/8/12 10:15:38 : 0
+2019/8/12 10:15:38 : [models/Measure/flag] ENTER
+2019/8/12 10:15:38 : [/api/measure_flag] EXIT
 

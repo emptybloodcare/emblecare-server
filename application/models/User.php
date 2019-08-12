@@ -30,13 +30,14 @@ class User extends CI_Model {
         $result = $this->db->get();
         
         // $data = '';
+        $data = null;
 
         // $this->error_log("모델 입성");
 
-        // foreach( $result->result() as $row )
-        // {
-        //   $data = $row->idx;
-        // }
+        foreach( $result->result() as $row )
+        {
+          $data = $row->idx;
+        }
         // $data = null;
         if( $result->num_rows()) {
           return array(
