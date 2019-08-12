@@ -34,22 +34,23 @@ class User extends CI_Model {
 
         // $this->error_log("모델 입성");
 
-        foreach( $result->result() as $row )
-        {
-          $data = $row->idx;
-        }
-        // $data = null;
         if( $result->num_rows()) {
+          foreach( $result->result() as $row )
+          {
+            $data = $row->idx;
+          }
+          // $data = null;
+        
           return array(
             'status' => API_SUCCESS, 
             'message' => '로그인 성공',
-            'data' => $data
+            'idx' => $data
           );
         } else {
           return array(
             'status' => 433, 
             'message' => '존재하지 않는 아이디 또는 패스워드입니다.',
-            'data' => $data
+            'idx' => $data
           );
         }
         
