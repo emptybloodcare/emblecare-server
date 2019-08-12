@@ -69,25 +69,6 @@ class Api extends CI_Controller {
 		echo json_encode($result);
 	}
 
-	/* 회원가입 API 2 */
-	public function join2($input) {
-		error_reporting(0);
-
-		$this->error_log("정음이가 들어왔어요");
-
-		$this->load->model('User');
-		$result = $this->User->insert(array(
-			'id' =>  element('id', $input, null),
-			'pw' => element('pw', $input, null),
-			'name' => element('name', $input, null),
-			'gender' => element('gender', $input, null),
-			'birth' => element('birth', $input, null)
-		));
-
-
-		echo json_encode($result);
-	}
-
 	/* 측정하기 API */
 	public function measure() {
 		$this->load->model('Measure');
@@ -164,6 +145,25 @@ class Api extends CI_Controller {
 		}
 		fputs($filep, "{$now} : {$msg}\n\r");
 		fclose($filep);
+    }
+
+    /* 측정하기 버튼 클릭 */
+    public function measure_flag() {
+    	$this->error_log("[/api/measure_flag] ENTER");
+		$_POST = json_decode(file_get_contents('php://input'), true);
+
+		$this->load->model('User');
+
+		$this->error_log("user_idx: " + $_POST['user_idx']);
+		$this->error_log("flag: " + $_POST['flag']);
+
+		$result = $this->Measure->flag(array(
+			'user_idx' => $_POST['user_idx'],
+			'flag' => $_POST['flag']
+		));
+
+		$this->error_log("[/api/measure_flag] EXIT");
+		echo json_encode($result);
     }
 
 }

@@ -28,6 +28,7 @@ class User extends CI_Model {
         $this->db->select("*");
         $this->db->from("user");
         $result = $this->db->get();
+        
         // $data = '';
 
         // $this->error_log("모델 입성");
