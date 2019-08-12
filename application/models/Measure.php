@@ -61,7 +61,7 @@ class Measure extends CI_Model {
     /* 측정하기 버튼 클릭 */
     public function flag($argu) {
       $this->error_log("[models/Measure/flag] ENTER");
-      if(empty($argu['flag'])) {
+      if(empty($argu['user_idx'])) {
         return array(
 			'status' => API_FAILURE, 
 			'message' => 'Fail'        

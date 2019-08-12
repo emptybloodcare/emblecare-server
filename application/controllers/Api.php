@@ -154,9 +154,6 @@ class Api extends CI_Controller {
 
 		$this->load->model('Measure');
 
-		$this->error_log("user_idx: " + $_POST['user_idx']);
-		$this->error_log("flag: " + $_POST['flag']);
-
 		$result = $this->Measure->flag(array(
 			'user_idx' => $_POST['user_idx'],
 			'flag' => $_POST['flag']
