@@ -125,24 +125,24 @@ class User extends CI_Model {
 
     /* Main 화면 */
     public function main($argu) {
-        $this->db->where('idx', $argu['user_idx']);
-        $this->db->select("*");
-        $this->db->from("user");
-        $result = $this->db->get();
-        $data = [];
-        foreach( $result->result() as $row)
-        {
-              $temp = array(
-                'name' => $row->name,
-                'risk' => $this->risk()
-              );
-              array_push($data, $temp);
-            }
-            return array(
-          'status' => API_SUCCESS, 
-          'message' => 'Success',
-          'data' => $data
-        );
+      $this->db->where('idx', $argu['user_idx']);
+      $this->db->select("*");
+      $this->db->from("user");
+      $result = $this->db->get();
+      $data = [];
+      foreach( $result->result() as $row)
+      {
+          $temp = array(
+            'name' => $row->name,
+            'risk' => $this->risk()
+          );
+          array_push($data, $temp);
+          
+          return array(
+            'status' => API_SUCCESS, 
+            'message' => 'Success',
+            'data' => $data
+          );
       }
     }
 
