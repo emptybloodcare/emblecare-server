@@ -35,7 +35,7 @@ class Measure extends CI_Model {
 			return array(
 				'status' => API_SUCCESS, 
 				'message' => 'Success',
-				'data' => json_encode($data)
+				'data' => $data
 			);
    		}
    	}
@@ -47,22 +47,30 @@ class Measure extends CI_Model {
         $this->db->from("measure");
         $result = $this->db->get();
         $data = [];
-        foreach( $result->result() as $row )
-        {
-        	$temp = array(
-        		'idx' => $row->idx,
-        		'hb' => $row->hb,
-        		'period' => $row->period,
-        		'date' => $row->date
-        	);
-          // $data = $row->idx;
-        	array_push($data, $temp);
+        if($result->num_rows()) {
+        	foreach( $result->result() as $row )
+	        {
+	        	$temp = array(
+	        		'idx' => $row->idx,
+	        		'hb' => $row->hb,
+	        		'period' => $row->period,
+	        		'date' => $row->date
+	        	);
+	        	array_push($data, $temp);
+	        }
+	        return array(
+				'status' => API_SUCCESS, 
+				'message' => 'Success',
+				'data' => $data
+			);
+        } else {
+        	return array(
+				'status' => 204, 
+				'message' => '측정결과가 존재하지 않습니다.',
+				'data' => $data
+			);
         }
-        return array(
-			'status' => API_SUCCESS, 
-			'message' => 'Success',
-			'data' => $data
-		);
+        
     }
 
     /* 측정하기 버튼 클릭 */
