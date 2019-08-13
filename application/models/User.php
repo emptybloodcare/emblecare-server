@@ -132,17 +132,17 @@ class User extends CI_Model {
       $data = [];
       foreach( $result->result() as $row)
       {
-          $temp = array(
-            'name' => $row->name,
-            'risk' => $this->risk()
-          );
-          array_push($data, $temp);
-          
-          return array(
-            'status' => API_SUCCESS, 
-            'message' => 'Success',
-            'data' => $data
-          );
+        $temp = array(
+          'name' => $row->name,
+          'risk' => $this->risk()
+        );
+        array_push($data, $temp);
+        
+        return array(
+          'status' => API_SUCCESS, 
+          'message' => 'Success',
+          'data' => $data
+        );
       }
     }
 

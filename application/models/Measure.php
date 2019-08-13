@@ -61,7 +61,8 @@ class Measure extends CI_Model {
 	        return array(
 				'status' => API_SUCCESS, 
 				'message' => 'Success',
-				'data' => $data
+				'data' => $data,
+				'dataNum' => $result->num_rows()
 			);
         } else {
         	return array(
