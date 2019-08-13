@@ -167,6 +167,18 @@ class Api extends CI_Controller {
 		echo json_encode($result);
     }
 
+    /* 메인화면 API */
+	public function main() {
+		$this->error_log("[/api/main] ENTER");
 
+		$this->load->model('User');
+		$result = $this->User->main(array(
+			'user_idx' => $_GET['user_idx']
+		));
+		
+		$this->error_log("[/api/main] EXIT");
+
+		echo json_encode($result);
+	}
 
 }
