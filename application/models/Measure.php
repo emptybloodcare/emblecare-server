@@ -49,8 +49,14 @@ class Measure extends CI_Model {
         $data = [];
         foreach( $result->result() as $row )
         {
+        	$temp = array(
+        		'idx' => $row->idx,
+        		'hb' => $row->hb,
+        		'period' => $row->period,
+        		'date' => $row->date
+        	);
           // $data = $row->idx;
-        	array_push($data, $row->idx);
+        	array_push($data, $temp);
         }
         return array(
 			'status' => API_SUCCESS, 
