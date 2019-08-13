@@ -50,6 +50,7 @@ class Measure extends CI_Model {
         foreach( $result->result() as $row )
         {
           // $data = $row->idx;
+        	array_push($data, $row->idx);
         }
         return array(
 			'status' => API_SUCCESS, 
