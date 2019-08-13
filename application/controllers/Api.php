@@ -65,21 +65,31 @@ class Api extends CI_Controller {
 
 	/* 측정하기 API */
 	public function measure() {
+		$this->error_log("[/api/measure] ENTER");
+		$_POST = json_decode(file_get_contents('php://input'), true);
+
 		$this->load->model('Measure');
 		$result = $this->Measure->insert(array(
 			'user_idx' => $_POST['user_idx'],
 			'period' => $_POST['period'],
 			'video' => $_POST['video']
 		));
+		
+		$this->error_log("[/api/measure] EXIT");
+
 		echo json_encode($result);
 	}
 
 	/* 측정리스트 API */
 	public function measures() {
+		$this->error_log("[/api/measures] ENTER");
+
 		$this->load->model('Measure');
 		$result = $this->Measure->list_search(array(
 			'user_idx' => $_GET['user_idx']
 		));
+		
+		$this->error_log("[/api/measures] EXIT");
 
 		echo json_encode($result);
 	}
@@ -156,5 +166,7 @@ class Api extends CI_Controller {
 		$this->error_log("[/api/measure_flag] EXIT");
 		echo json_encode($result);
     }
+
+
 
 }
