@@ -11,15 +11,21 @@ class Measure extends CI_Model {
 
    	/* 측정하기 */
    	public function insert($argu) {
+   		print_r($argu);
+   		error_reporting(0);
    		if(0) {
+
 			return array(
 				'status' => API_FAILURE, 
 				'message' => 'Fail',
 				'data' => null
 			);
    		} else {
+   			$this->error_log("[models/Measure/flag] ENTER");
+
    			$weather = $this->get_weather();
    			print_r($weather);
+
 
    			// file upload
    			$file = $argu['video'];
@@ -80,6 +86,7 @@ class Measure extends CI_Model {
     	$this->db->where('user_idx', $argu['user_idx']);
         $this->db->select("*");
         $this->db->from("measure");
+        $this->db->order_by("date", "desc");
         $result = $this->db->get();
         $data = [];
         if($result->num_rows()) {

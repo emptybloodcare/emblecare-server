@@ -72,8 +72,16 @@ class Api extends CI_Controller {
 
 	/* 측정하기 API */
 	public function measure() {
+
 		$this->error_log("[/api/measure] ENTER");
-		$_POST = json_decode(file_get_contents('php://input'), true);
+		$_POST = json_decode(file_get_contents('php://input'), FILE_USE_INCLUDE_PATH);
+
+		echo "test".$_POST['user_idx'];
+		print_r($_POST);
+		
+		echo $this->input->post('period');
+		echo "<br>";
+
 
 		$this->load->model('Measure');
 		$result = $this->Measure->insert(array(
