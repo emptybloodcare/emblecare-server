@@ -24,12 +24,11 @@ class Measure extends CI_Model {
 
    			$weather = $this->get_weather();
    			// file upload
-   // 			$file = $argu['video'];
-   // 			$uploadDir = $_SERVER['DOCUMENT_ROOT'].'/upload/video';
-   // 			$tmp_name = $file["tmp_name"];
-			// $name = date("YmdHis").'_'.$file["name"];
-			// echo "$uploadDir/$name";
-			// move_uploaded_file($tmp_name , "$uploadDir/$name");
+   			$file = $argu['video'];
+   			$uploadDir = $_SERVER['DOCUMENT_ROOT'].'/upload/video';
+   			$tmp_name = $file["tmp_name"];
+			$name = date("YmdHis").'_'.$file["name"];
+			move_uploaded_file($tmp_name , "$uploadDir/$name");
 
 
    			$this->db->set('period', $argu['period']);
@@ -57,7 +56,7 @@ class Measure extends CI_Model {
 			$this->error_log('user_idx:'.$argu['user_idx']);
 			$this->error_log('user_idx:'. $weather['temp']);
 			$this->error_log('user_idx:'.$weather['reh']);
-						
+
 
 			$this->db->insert("measure");
 
