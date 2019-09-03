@@ -67,7 +67,7 @@ class Measure extends CI_Model {
 
 			$data = array(
 				'hb' => 0,
-				'data' => date("y/m/d")
+				'date' => date("y/m/d")
 			);
 
 			return array(
