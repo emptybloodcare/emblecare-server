@@ -234,4 +234,9 @@
 2019/9/3 8:10:13 : [models/Measure/flag] ENTER
 2019/9/3 8:16:40 : [/api/measures] ENTER
 2019/9/3 8:16:42 : [/api/measures] ENTER
+2019/9/3 8:20:40 : [/api/measures] ENTER
+2019/9/3 8:20:41 : [/api/measures] ENTER
+2019/9/3 8:20:42 : [/api/measures] ENTER
+2019/9/3 8:20:45 : [/api/measure] ENTER
+2019/9/3 8:20:45 : [models/Measure/flag] ENTER
 
