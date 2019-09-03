@@ -11,7 +11,6 @@ class Measure extends CI_Model {
 
    	/* 측정하기 */
    	public function insert($argu) {
-   		print_r($argu);
    		error_reporting(0);
    		if(0) {
 
@@ -53,15 +52,19 @@ class Measure extends CI_Model {
 			$this->db->set('humidity', $weather['reh']);
 			$this->error_log("5");
 
-			$this->db->insert("measure");
-			$this->error_log("6");
-
-			// $result = $this->db->get();
-			// $this->error_log("1");
-
 
 			$this->error_log('period:'.$argu['period']);
 			$this->error_log('user_idx:'.$argu['user_idx']);
+			$this->error_log('user_idx:'. $weather['temp']);
+			$this->error_log('user_idx:'.$weather['reh']);
+						
+
+			$this->db->insert("measure");
+
+			$this->error_log("6");
+
+
+
 
 			$this->error_log("[models/Measure/insert] EXIT");
 
