@@ -11,19 +11,32 @@ class Measure extends CI_Model {
 
    	/* 측정하기 */
    	public function insert($argu) {
-   		if(empty($argu['period']) || empty($argu['video'])) {
+   		if(0) {
 			return array(
 				'status' => API_FAILURE, 
 				'message' => 'Fail',
 				'data' => null
 			);
    		} else {
+   			$weather = $this->get_weather();
+   			print_r($weather);
+
+   			// file upload
+   			$file = $argu['video'];
+   			$uploadDir = $_SERVER['DOCUMENT_ROOT'].'/upload/video';
+   			$tmp_name = $file["tmp_name"];
+			$name = date("YmdHis").'_'.$file["name"];
+			echo "$uploadDir/$name";
+			move_uploaded_file($tmp_name , "$uploadDir/$name");
+
+
+
    			$this->db->set('period', $argu['period']);
 			$this->db->set('hb', 0);
 			$this->db->set('user_idx', $argu['user_idx']);
 			$this->db->set('date', date("y/m/d"));
-			$this->db->set('temperature', 0);
-			$this->db->set('humidity', 0);
+			$this->db->set('temperature', $weather['temp']);
+			$this->db->set('humidity', $weather['reh']);
 			$this->db->insert("measure");
 			$result = $this->db->get();
 
@@ -38,6 +51,28 @@ class Measure extends CI_Model {
 				'data' => $data
 			);
    		}
+   	}
+
+   	public function get_weather() {
+   		$url = "http://api.openweathermap.org/data/2.5/weather?q=Seoul,kr&units=metric&APPID=4049256d888776cd6b2a0d093b861255";
+		 
+		$ch = curl_init();
+		 
+		curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+		 
+		curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+		 
+		curl_setopt($ch, CURLOPT_URL, $url);
+		 
+		$result=curl_exec($ch);
+		 
+		$json_results = json_decode($result, true);
+		 
+		$data = array(
+			'temp' => $json_results['main']['temp'],
+			'reh' => $json_results['main']['humidity']
+		);
+		return $data;
    	}
 
     /* 측정 리스트 */

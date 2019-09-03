@@ -26,6 +26,13 @@ class Api extends CI_Controller {
 		$this->load->view('welcome_message');
 	}
 
+	/* measure test */
+	public function test()
+	{
+		$this->load->helper('url');
+		$this->load->view('measure');
+	}
+
 	/* 로그인 API */
 	public function login() {
 		$this->error_log("[/api/login] ENTER");
@@ -72,7 +79,7 @@ class Api extends CI_Controller {
 		$result = $this->Measure->insert(array(
 			'user_idx' => $_POST['user_idx'],
 			'period' => $_POST['period'],
-			'video' => $_POST['video']
+			'video' => $_FILES['video']
 		));
 		
 		$this->error_log("[/api/measure] EXIT");

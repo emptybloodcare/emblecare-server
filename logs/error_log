@@ -129,4 +129,49 @@
 2019/8/12 10:21:30 : 
 2019/8/12 10:21:30 : 
 2019/8/12 10:21:30 : [/api/login] EXIT
+2019/9/3 6:30:55 : [/api/measure] ENTER
+2019/9/3 6:30:55 : [/api/measure] EXIT
+2019/9/3 6:31:30 : [/api/measure] ENTER
+2019/9/3 6:31:30 : [/api/measure] EXIT
+2019/9/3 6:31:30 : [/api/measure] ENTER
+2019/9/3 6:31:30 : [/api/measure] EXIT
+2019/9/3 6:31:56 : [/api/measure] ENTER
+2019/9/3 6:31:56 : [/api/measure] EXIT
+2019/9/3 6:31:56 : [/api/measure] ENTER
+2019/9/3 6:31:56 : [/api/measure] EXIT
+2019/9/3 6:32:1 : [/api/measure] ENTER
+2019/9/3 6:32:1 : [/api/measure] EXIT
+2019/9/3 6:32:1 : [/api/measure] ENTER
+2019/9/3 6:32:1 : [/api/measure] EXIT
+2019/9/3 6:32:2 : [/api/measure] ENTER
+2019/9/3 6:32:2 : [/api/measure] EXIT
+2019/9/3 6:32:2 : [/api/measure] ENTER
+2019/9/3 6:32:2 : [/api/measure] EXIT
+2019/9/3 6:32:2 : [/api/measure] ENTER
+2019/9/3 6:32:2 : [/api/measure] EXIT
+2019/9/3 6:33:3 : [/api/measure] ENTER
+2019/9/3 6:33:3 : [/api/measure] EXIT
+2019/9/3 6:33:4 : [/api/measure] ENTER
+2019/9/3 6:33:4 : [/api/measure] EXIT
+2019/9/3 6:33:6 : [/api/measure] ENTER
+2019/9/3 6:33:6 : [/api/measure] EXIT
+2019/9/3 6:33:16 : [/api/measure] ENTER
+2019/9/3 6:33:16 : [/api/measure] EXIT
+2019/9/3 6:33:36 : [/api/measure] ENTER
+2019/9/3 6:33:36 : [/api/measure] EXIT
+2019/9/3 6:33:45 : [/api/measure] ENTER
+2019/9/3 6:33:45 : [/api/measure] EXIT
+2019/9/3 6:33:51 : [/api/measure] ENTER
+2019/9/3 6:34:10 : [/api/measure] ENTER
+2019/9/3 6:34:22 : [/api/measure] ENTER
+2019/9/3 6:34:33 : [/api/measure] ENTER
+2019/9/3 6:34:44 : [/api/measure] ENTER
+2019/9/3 6:37:21 : [/api/measure] ENTER
+2019/9/3 6:37:29 : [/api/measure] ENTER
+2019/9/3 6:39:52 : [/api/measure] ENTER
+2019/9/3 6:40:9 : [/api/measure] ENTER
+2019/9/3 6:40:24 : [/api/measure] ENTER
+2019/9/3 6:40:29 : [/api/measure] ENTER
+2019/9/3 6:40:50 : [/api/measure] ENTER
+2019/9/3 6:41:28 : [/api/measure] ENTER
 

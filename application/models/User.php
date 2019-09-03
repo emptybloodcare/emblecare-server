@@ -144,6 +144,12 @@ class User extends CI_Model {
           'data' => $data
         );
       }
+
+      return array(
+          'status' => 400, 
+          'message' => 'Fail',
+          'data' => $data
+        );
     }
 
     /* 빈혈 위험도 계산 */
