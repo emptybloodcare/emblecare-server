@@ -76,13 +76,6 @@ class Api extends CI_Controller {
 		$this->error_log("[/api/measure] ENTER");
 		$_POST = json_decode(file_get_contents('php://input'), FILE_USE_INCLUDE_PATH);
 
-		echo "test".$_POST['user_idx'];
-		print_r($_POST);
-		
-		echo $this->input->post('period');
-		echo "<br>";
-
-
 		$this->load->model('Measure');
 		$result = $this->Measure->insert(array(
 			'user_idx' => $_POST['user_idx'],

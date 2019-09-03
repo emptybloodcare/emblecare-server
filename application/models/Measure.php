@@ -21,12 +21,9 @@ class Measure extends CI_Model {
 				'data' => null
 			);
    		} else {
-   			$this->error_log("[models/Measure/flag] ENTER");
+   			$this->error_log("[models/Measure/insert] ENTER");
 
    			$weather = $this->get_weather();
-   			print_r($weather);
-
-
    			// file upload
    // 			$file = $argu['video'];
    // 			$uploadDir = $_SERVER['DOCUMENT_ROOT'].'/upload/video';
@@ -37,18 +34,36 @@ class Measure extends CI_Model {
 
 
    			$this->db->set('period', $argu['period']);
-			$this->db->set('hb', 0);
-			$this->db->set('user_idx', $argu['user_idx']);
-			$this->db->set('date', date("y/m/d"));
-			$this->db->set('temperature', $weather['temp']);
-			$this->db->set('humidity', $weather['reh']);
-			$this->db->insert("measure");
-			$result = $this->db->get();
 
-			$this->error_log("[models/Measure/insert]");
+
+			$this->error_log("1");
+
+			$this->db->set('hb', 0);
+			$this->error_log("1");
+
+			$this->db->set('user_idx', $argu['user_idx']);
+			$this->error_log("2");
+
+			$this->db->set('date', date("y/m/d"));
+			$this->error_log("3");
+
+			$this->db->set('temperature', $weather['temp']);
+			$this->error_log("4");
+
+			$this->db->set('humidity', $weather['reh']);
+			$this->error_log("5");
+
+			$this->db->insert("measure");
+			$this->error_log("6");
+
+			// $result = $this->db->get();
+			// $this->error_log("1");
+
+
 			$this->error_log('period:'.$argu['period']);
 			$this->error_log('user_idx:'.$argu['user_idx']);
 
+			$this->error_log("[models/Measure/insert] EXIT");
 
 			$data = array(
 				'hb' => 0,
