@@ -29,8 +29,14 @@ class Api extends CI_Controller {
 	/* measure test */
 	public function test()
 	{
-		$this->load->helper('url');
-		$this->load->view('measure');
+		// system("python test.py");
+
+		exec("python ".$_SERVER['DOCUMENT_ROOT']."/python_script/test.py", $out, $status);
+
+		echo $out[0]; 
+		echo $out[1];
+		// $this->load->helper('url');
+		// $this->load->view('measure');
 	}
 
 	/* 로그인 API */
