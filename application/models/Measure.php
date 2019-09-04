@@ -107,7 +107,7 @@ class Measure extends CI_Model {
     	$this->db->where('user_idx', $argu['user_idx']);
         $this->db->select("*");
         $this->db->from("measure");
-        $this->db->order_by("date", "desc");
+        $this->db->order_by("idx", "desc");
         $result = $this->db->get();
         $data = [];
         if($result->num_rows()) {
