@@ -30,9 +30,18 @@ class Api extends CI_Controller {
 	public function test()
 	{
 		exec("python ".$_SERVER['DOCUMENT_ROOT']."/python_script/test.py", $out, $status);
-
+		print_r($status);
 		echo $out[0]; 
 		echo $out[1];
+	}
+
+	/* python test */
+	public function svm()
+	{
+		exec("python ".$_SERVER['DOCUMENT_ROOT']."/python_script/emble_svm.py", $out, $status);
+		print_r($status);
+		// echo $out[0]; 
+		// echo $out[1];
 	}
 
 	/* 로그인 API */
