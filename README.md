@@ -6,6 +6,7 @@
 ------
 ### Demo Video
 [![Video Label](http://img.youtube.com/vi/S0A-YuS9tQs/0.jpg)](https://youtu.be/NvWIE0nJPMM) 
+<iframe width="560" height="315" src="https://www.youtube.com/embed/NvWIE0nJPMM" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 ------
 
